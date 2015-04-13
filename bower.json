@@ -1,7 +1,7 @@
 {
   "name": "emitter",
   "description": "Event emitter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "emitter.js",
   "dependencies": {
     "define": "*",

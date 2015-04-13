@@ -19,8 +19,6 @@ channel.emit('foo');
 Roadmap
 -------
 
-*   create logic of methods out of the closure
-    (partial apply from the closure)
 *   chainable api
 *   `once()`
 *   `off()`
