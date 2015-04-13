@@ -1,0 +1,20 @@
+{
+  "name": "emitter",
+  "description": "Event emitter",
+  "version": "0.1.0",
+  "main": "emitter.js",
+  "dependencies": {
+    "define": "*",
+    "mu.is": "*",
+    "mu.fn": "*",
+    "mu.list": "*",
+    "mu.api": "*"
+  },
+  "keywords": [
+    "event",
+    "emitter",
+    "on",
+    "emit"
+  ],
+  "license": "MIT"
+}
