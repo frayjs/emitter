@@ -23,10 +23,12 @@ define('mu.api.emitter', function (require) {
   };
 
   var emitter = function () {
+    var listeners = {};
+
     return chain({
       on: on,
       emit: emit
-    }, {});
+    }, listeners);
   };
 
   return emitter;
