@@ -19,6 +19,5 @@ channel.emit('foo');
 Roadmap
 -------
 
-*   chainable api
 *   `once()`
 *   `off()`

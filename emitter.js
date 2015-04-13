@@ -3,8 +3,8 @@ define('mu.api.emitter', function (require) {
 
   var isDefined = require('mu.is.defined'),
       apply     = require('mu.fn.apply'),
-      partial   = require('mu.fn.partial'),
-      each      = require('mu.list.each');
+      each      = require('mu.list.each'),
+      chain     = require('mu.api.chain');
 
   var on = function (listeners, event, listener) {
     if (!isDefined(listeners[event])) { listeners[event] = []; }
@@ -23,12 +23,10 @@ define('mu.api.emitter', function (require) {
   };
 
   var emitter = function () {
-    var listeners = {};
-
-    return {
-      on: partial(on, listeners),
-      emit: partial(emit, listeners)
-    };
+    return chain({
+      on: on,
+      emit: emit
+    }, {});
   };
 
   return emitter;
