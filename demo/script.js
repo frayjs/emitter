@@ -3,7 +3,9 @@ define.root(function (require) {
 
   var emitter = require('mu.api.emitter');
 
-  var channel = emitter();
+  var log = console.log.bind(console),
+      channel = emitter();
+  
   channel.emit('foo', 1, 2, 3);
-  channel.on('foo', console.log.bind(console));
+  channel.on('foo', log);
 });

@@ -9,11 +9,9 @@ Usage
 Events are deferred ensuring an asynchronous execution
 
 ```js
-var channel = emitter();
+var log = console.log.bind(console),
+    channel = emitter();
 
 channel.emit('foo');
-
-channel.on('foo', function () {
-  console.log('foo has been emitted!');
-});
+channel.on('foo', log);
 ```
