@@ -3,7 +3,7 @@ define('mu.api.emitter', function (require) {
 
   var isDefined = require('mu.is.defined'),
       apply     = require('mu.fn.apply'),
-      debounce  = require('mu.fn.defer'),
+      defer     = require('mu.fn.defer'),
       each      = require('mu.list.each'),
       chain     = require('mu.api.chain');
 
