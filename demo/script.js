@@ -1,11 +1,12 @@
 define.root(function (require) {
   'use strict';
 
-  var emitter = require('mu.api.emitter');
+  var emitter = require('mu.api.emitter'),
+      log = require('log');
 
-  var log = console.log.bind(console),
-      channel = emitter();
+  var channel = emitter();
   
   channel.emit('foo', 1, 2, 3);
   channel.on('foo', log);
+  log('start');
 });

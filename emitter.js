@@ -12,12 +12,16 @@ define('mu.api.emitter', function (require) {
     listeners[event].push(listener);
   };
 
+  var notify = function (msg) {
+    return function (listener) {
+      apply(listener, msg);
+    };
+  };
+
   var emit = defer(function (listeners, event /* , msg... */) {
     var msg = [].slice.call(arguments, 2);
-
-    each(listeners[event], defer(function (listener) {
-      apply(listener, msg);
-    }));
+    each(listeners[event], defer(notify(msg)));
+    each(listeners.event, defer(notify([event].concat(msg))));
   });
 
   var emitter = function () {
