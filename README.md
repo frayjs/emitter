@@ -1,10 +1,14 @@
-events
-======
+async
+=====
+
+Collection of utilities for async development
+
+API
+---
+
+### events()
 
 Event emitter
-
-Usage
------
 
 Events are deferred ensuring an asynchronous execution
 
