@@ -1,5 +1,5 @@
-emitter
-=======
+events
+======
 
 Event emitter
 
@@ -10,7 +10,7 @@ Events are deferred ensuring an asynchronous execution
 
 ```js
 var log = console.log.bind(console),
-    channel = emitter();
+    channel = events();
 
 channel.emit('foo');
 channel.on('foo', log);

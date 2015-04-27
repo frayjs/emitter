@@ -1,4 +1,4 @@
-define('mu.api.emitter', function (require) {
+define('mu.async.events', function (require) {
   'use strict';
 
   var isDefined = require('mu.is.defined'),
@@ -24,7 +24,7 @@ define('mu.api.emitter', function (require) {
     each(listeners.event, defer(notify([event].concat(msg))));
   });
 
-  var emitter = function () {
+  var events = function () {
     var listeners = {};
 
     return chain({
@@ -33,5 +33,5 @@ define('mu.api.emitter', function (require) {
     }, listeners);
   };
 
-  return emitter;
+  return events;
 });
