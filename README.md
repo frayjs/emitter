@@ -1,12 +1,5 @@
-async
-=====
-
-Collection of utilities for async development
-
-API
----
-
-### events()
+events
+======
 
 Event emitter
 
