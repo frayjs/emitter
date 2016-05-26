@@ -9,20 +9,19 @@ var notify = function (msg, listener) {
   listener.apply(null, msg);
 };
 
+var digest = function (listeners, event, msg) {
+  if (Array.isArray(listeners[event])) {
+    listeners[event].forEach(notify.bind(null, msg));
+  }
+};
+
 var emit = function (listeners, event /* , msg... */) {
   var msg = [].slice.call(arguments, 2);
 
-  if (Array.isArray(listeners[event])) {
-    setTimeout(function () {
-      listeners[event].forEach(notify.bind(null, msg));
-    }, 0);
-  }
-
-  if (Array.isArray(listeners['event'])) {
-    setTimeout(function () {
-      listeners['event'].forEach(notify.bind(null, [event].concat(msg)));
-    }, 0);
-  }
+  setTimeout(function () {
+    digest(listeners, event, msg);
+    digest(listeners, 'event', [event].concat(msg));
+  }, 0);
 };
 
 var emitter = function () {
