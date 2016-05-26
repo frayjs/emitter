@@ -44,6 +44,40 @@ describe('emitter', function () {
         channel.emit('test');
         channel.on('test', done);
       });
+
+      it('should emit an "event" event for each emitted event', function (done) {
+        channel.on('event', function (eventName) {
+          expect(eventName).to.be('test');
+          done();
+        });
+
+        channel.emit('test');
+      });
+
+      it('should call listeners with provided arguments', function (done) {
+        channel.on('test', function (foo, bar, qux) {
+          expect(foo).to.be(123);
+          expect(bar).to.be('abc');
+          expect(qux).to.be.a('function');
+
+          done();
+        });
+
+        channel.emit('test', 123, 'abc', function () {});
+      });
+
+      it('should call "event" event listeners with the event name followed by provided arguments', function (done) {
+        channel.on('event', function (eventName, foo, bar, qux) {
+          expect(eventName).to.be('test');
+          expect(foo).to.be(123);
+          expect(bar).to.be('abc');
+          expect(qux).to.be.a('function');
+
+          done();
+        });
+
+        channel.emit('test', 123, 'abc', function () {});
+      });
     });
   });
 });
