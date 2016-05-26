@@ -1,34 +1,36 @@
 'use strict';
 
-var isDefined = require('mu.is.defined'),
-    apply     = require('mu.fn.apply'),
-    partial   = require('mu.fn.partial'),
-    defer     = require('mu.fn.defer'),
-    each      = require('mu.list.each');
-
-var on = function (listeners, event, listener) {
-  if (!isDefined(listeners[event])) { listeners[event] = []; }
+var addListener = function (listeners, event, listener) {
+  if (typeof listeners[event] === 'undefined') { listeners[event] = []; }
   listeners[event].push(listener);
 };
 
-var notify = function (msg) {
-  return function (listener) {
-    apply(listener, msg);
-  };
+var notify = function (msg, listener) {
+  listener.apply(null, msg);
 };
 
-var emit = defer(function (listeners, event /* , msg... */) {
+var emit = function (listeners, event /* , msg... */) {
   var msg = [].slice.call(arguments, 2);
-  each(listeners[event], defer(notify(msg)));
-  each(listeners.event, defer(notify([event].concat(msg))));
-});
+
+  if (Array.isArray(listeners[event])) {
+    setTimeout(function () {
+      listeners[event].forEach(notify.bind(null, msg));
+    }, 0);
+  }
+
+  if (Array.isArray(listeners['event'])) {
+    setTimeout(function () {
+      listeners['event'].forEach(notify.bind(null, [event].concat(msg)));
+    }, 0);
+  }
+};
 
 var emitter = function () {
   var listeners = {};
 
   return {
-    on: partial(on, listeners),
-    emit: partial(emit, listeners)
+    on: addListener.bind(null, listeners),
+    emit: emit.bind(null, listeners)
   };
 };
 
