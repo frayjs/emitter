@@ -12,10 +12,12 @@ Events are deferred ensuring an asynchronous execution
 var emitter = require('fray.emitter');
 
 var channel = emitter();
-var log = console.log.bind(console);
 
-channel.emit('foo');
-channel.on('foo', log);
+channel.emit('foo', 'hello!');
+
+channel.on('foo', function (msg) {
+  console.log(msg); // 'hello!'
+});
 ```
 
 Install
