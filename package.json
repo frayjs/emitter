@@ -23,6 +23,7 @@
   "scripts": {
     "test": "gulp test",
     "coverage": "npm run test && freddie -r tmp/coverage/lcov-report",
+    "codeclimate": "codeclimate-test-reporter < tmp/coverage/lcov.info",
     "precommit": "npm test",
     "patch": "mversion patch -mn",
     "minor": "mversion minor -mn",
