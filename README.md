@@ -5,7 +5,6 @@ Event emitter
 
 [![Build Status](https://travis-ci.org/frayjs/emitter.svg?branch=master)](https://travis-ci.org/frayjs/emitter)
 [![Test Coverage](https://codeclimate.com/github/frayjs/emitter/badges/coverage.svg)](https://codeclimate.com/github/frayjs/emitter/coverage)
-[![Issue Count](https://codeclimate.com/github/frayjs/emitter/badges/issue_count.svg)](https://codeclimate.com/github/frayjs/emitter)
 
 Usage
 -----
